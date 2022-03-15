@@ -39,13 +39,15 @@ def handle_video(url, file_name, chat_id, caption, uid):
             if os.path.isfile('thumbs/thumb_' + str(uid)):
                 message = app.send_video(chat_id, PATH + file_name, caption, thumb='thumbs/thumb_' + str(uid), duration=duration) 
             elif thumb != 'null':
-                message = app.send_video(chat_id, PATH + file_name, caption, 'thumbs/' + thumb, duration=duration)
+                message = app.send_video(chat_id, PATH + file_name, caption, thumb='thumbs/' + thumb, duration=duration)
             else:
                 message = app.send_video(chat_id, PATH + file_name, caption, duration=duration)
         except:
             remove(PATH + file_name)
             remove('thumbs/' + thumb)
-        # app.forward_messages(chatid, message.chat.id, message.message_id) #uncomment this if you want to forward everything somewhere
+        # app.forward_messages(chatid, message.chat.id, message.message_id) 
+        # app.forward_messages(chatid, message.chat.id, message.message_id) 
+        # app.forward_messages(chatid, message.chat.id, message.message_id) 
         remove(PATH + file_name)
         remove('thumbs/' + thumb)
     else:
@@ -95,11 +97,11 @@ def start_job(client, message):
         message.reply_text('Usuário não autorizado, contacte @anticongelante para se informar e obter acesso')
         return
     if not is_valid:
-        message.reply_text('Connection error thrown at ' + url, quote=True)
+        message.reply_text('Off  ' 🇺🇦 + url, quote=True)
         return
     ext = helper.get_ext(url)
     if not ext:
-        message.reply_text('Failed to get content-type from headers, using mp4 as fallback ', quote=True)
+        message.reply_text('Erro', quote=True)
         ext = '.mp4'
     if len(splited) < 2:
         caption = url   #just for now xD
@@ -107,7 +109,7 @@ def start_job(client, message):
     else:
         caption = splited[1] 
         file_name = str(n) + ext
-    message.reply_text('Trying to download: ' + url)
+    message.reply_text('Trying to download: 🇺🇦 ' + url)
     scheduler.add_job(handle_video, args=(url, file_name, chat_id, caption, uid), max_instances=500)
 
 @app.on_message(filters.photo & filters.command(['thumb']))
@@ -138,12 +140,10 @@ def delete_thumb(client, message):
 @app.on_message(filters.command(['start', 'help']))
 def help(client, message):
     message.reply_text("""
-    Usage: 
-    URL | NAME 
-    in case name is omitted a random one will be generated
+    
+   Oi Gatinho 💋 🇺🇦
 
-    To set a default thumbnail just send a new image file maximum 200kb (i never tested this feature so it may break everything xD)
-    To delete the current thumbnail use /delete_thumb
+   
     """)
 
 
